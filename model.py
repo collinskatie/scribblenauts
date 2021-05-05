@@ -10,15 +10,16 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # seed GPT-3 with natural language type prompts:
 
+
 seed = """Help Max achieve his goals.\n
-To put the lion to sleep, I need a person, who is an zoologist.\n
-To electrocute the water and kill the eel, I need a tool, which is a lightning rod.\n
+To fix the car, I need a person, who is a mechanic.\n
+To bury the treasure, I need a tool, which is a shovel.\n
 To make the farmer happy, I need three animals, which are a cow, pig, and chicken.\n"""
 
 # globals for parsing
 vowels = {"a", "e", "i", "o", "u"}
 
-goals = ["Cut down the tree.", "Bake a cake."]
+goals = ["Cut down the tree.", "Put the King of the Jungle to Sleep.", "Bake a cake.", "Electrocute the water and kill the eel."]
 
 
 def parse_goal(goal):
@@ -34,11 +35,11 @@ def expand_goal(current_goal, sampling="greedy"):
     # sampling method determines number of sub-goals returned
 
     # pre-fixed options
-    actions = ["tool", "animal", "person"]
+    action_expansions = {"tool": "which", "person": "who", "animal": "which"}
 
     # extended subgoals with score tuples
     subgoals = []
-    for action in actions:
+    for action in action_expansions.keys():
         # handle grammar
         if action[0] in vowels:
             parsed_action = f' I need an {action}'
@@ -61,10 +62,9 @@ def expand_goal(current_goal, sampling="greedy"):
         )
 
         score = np.sum(response["choices"][0].logprobs.token_logprobs[1:])
-        subgoals.append((prompt + ", which is", score))
+        subgoals.append((prompt + f', {action_expansions[action]}', score))
 
     sorted_subgoals = sorted(subgoals, key=lambda x: x[1], reverse=True)  # lowest log prob = best = first idx
-    print("sorted subgoals: ", sorted_subgoals)
 
     if sampling == "greedy":
         return [sorted_subgoals[0]]
@@ -95,13 +95,11 @@ def complete_plan(current_goal, sampling="greedy", max_token_len=10, num_generat
     for idx, sample in enumerate(response["choices"]):
         # handle stop token
         first_stop = np.where(np.array(response["choices"][idx].logprobs.tokens) == '\n')
-        print("first stop: ", first_stop)
-        end_token_idx = first_stop[0][0] if first_stop is not None else 1
+        end_token_idx = first_stop[0][0] if first_stop is not None and len(first_stop[0]) != 0 else 1
 
         # extract joint prob of generation
-        log_prob = np.sum(
-            response["choices"][idx].logprobs.token_logprobs[:end_token_idx])  # UPDATE: only sum prior to stop token
-        print(sample["text"], ' rel prob: ' + str(log_prob))
+        log_prob = np.sum(response["choices"][idx].logprobs.token_logprobs[
+                          :end_token_idx])  # UPDATE: only sum prior to stop token
 
         # append to existing goal stream
         generations.append((current_goal + sample["text"], log_prob))

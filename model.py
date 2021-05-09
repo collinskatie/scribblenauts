@@ -155,7 +155,7 @@ for goal in goals:
         for expansion, score in expansions:
             completions = complete_plan(expansion, sampling=sampling, max_token_len=max_token_len)
             all_completions.extend(completions)
-    sorted_completions = sorted(all_completions, key=lambda x: x[1])
+    sorted_completions = sorted(all_completions, key=lambda x: x[1], reverse=True)
     problem_solutions[goal] = sorted_completions
 
 print(problem_solutions)

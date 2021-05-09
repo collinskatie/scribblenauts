@@ -138,15 +138,23 @@ def complete_plan(current_goal, sampling="greedy", max_token_len=10, num_generat
         return sorted_completions
 
 sampling = "brainstorm"
+use_flat_model = True # toggle to flip b/w using flat vs. hierarchal/constrained model
 max_token_len= 30
 problem_solutions = {}
 for goal in goals:
     parsed_goal = parse_goal(goal)
-    expansions = expand_goal(parsed_goal, sampling=sampling)
-    all_completions = []
-    for expansion, score in expansions:
-        completions = complete_plan(expansion, sampling=sampling, max_token_len= max_token_len)
+    if use_flat_model:
+        parsed_goal += " I need"
+        all_completions = []
+        completions = complete_plan(parsed_goal, sampling=sampling, max_token_len=max_token_len)
         all_completions.extend(completions)
+    else:
+        # use hierarchal/constrained sampling
+        expansions = expand_goal(parsed_goal, sampling=sampling)
+        all_completions = []
+        for expansion, score in expansions:
+            completions = complete_plan(expansion, sampling=sampling, max_token_len=max_token_len)
+            all_completions.extend(completions)
     sorted_completions = sorted(all_completions, key=lambda x: x[1])
     problem_solutions[goal] = sorted_completions
 

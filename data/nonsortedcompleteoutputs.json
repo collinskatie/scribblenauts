@@ -1,0 +1,490 @@
+{
+    "Cut down the tree.": [
+        [
+            "To cut down the tree, I need a tool, which is an axe.",
+            -0.006206525
+        ],
+        [
+            "To cut down the tree, I need a tool, which is an axe.",
+            -0.5112687709999999
+        ],
+        [
+            "To cut down the tree, I need a tool, which is an axe.",
+            -0.517964847
+        ],
+        [
+            "To cut down the tree, I need a tool, which is an axe.",
+            -0.5222971
+        ],
+        [
+            "To cut down the tree, I need a tool, which is an axe.",
+            -0.52229757
+        ],
+        [
+            "To cut down the tree, I need a tool, which is an axe.",
+            -0.5304737820000001
+        ],
+        [
+            "To cut down the tree, I need a tool, which is an axe.",
+            -0.5455440463
+        ],
+        [
+            "To cut down the tree, I need a tool, which is an axe.",
+            -0.545544288
+        ],
+        [
+            "To cut down the tree, I need a tool, which is an ax.",
+            -1.502169969
+        ],
+        [
+            "To cut down the tree, I need a tool, which is a saw.",
+            -2.619844622
+        ],
+        [
+            "To cut down the tree, I need a person, who is a lumberjack.",
+            -0.091595925
+        ],
+        [
+            "To cut down the tree, I need a person, who is a lumberjack.",
+            -1.1057591509999998
+        ],
+        [
+            "To cut down the tree, I need a person, who is a lumberjack.",
+            -1.1083532939999998
+        ],
+        [
+            "To cut down the tree, I need a person, who is a lumberjack.",
+            -1.112728751
+        ],
+        [
+            "To cut down the tree, I need a person, who is a lumberjack.",
+            -1.118799087
+        ],
+        [
+            "To cut down the tree, I need a person, who is an axeman.",
+            -2.126938768
+        ],
+        [
+            "To cut down the tree, I need a person, who is an axeman.",
+            -2.132384913
+        ],
+        [
+            "To cut down the tree, I need a person, who is an axeman.",
+            -2.142542594
+        ],
+        [
+            "To cut down the tree, I need a person, who is an axe man.",
+            -4.671615022
+        ],
+        [
+            "To cut down the tree, I need a person, who is an engineer.",
+            -5.091842099999999
+        ],
+        [
+            "To cut down the tree, I need an animal, which is an axe.",
+            -1.840718675
+        ],
+        [
+            "To cut down the tree, I need an animal, which is an elephant.",
+            -2.21817243
+        ],
+        [
+            "To cut down the tree, I need an animal, which is an elephant.",
+            -2.2453456910000003
+        ],
+        [
+            "To cut down the tree, I need an animal, which is an ox.",
+            -2.8457289500000003
+        ],
+        [
+            "To cut down the tree, I need an animal, which is a saw.",
+            -3.376746994
+        ],
+        [
+            "To cut down the tree, I need an animal, which is a woodcutter.",
+            -4.1005646606
+        ],
+        [
+            "To cut down the tree, I need an animal, which is a lion.",
+            -4.2279909909999995
+        ],
+        [
+            "To cut down the tree, I need an animal, which is a wolf.",
+            -4.3573932200000005
+        ],
+        [
+            "To cut down the tree, I need an animal, which is a bull.",
+            -4.725201996
+        ],
+        [
+            "To cut down the tree, I need an animal, which is a tractor.",
+            -5.193782762999999
+        ]
+    ],
+    "Put the King of the Jungle to sleep.": [
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a banana.",
+            -1.640969348
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a banana.",
+            -1.644986714
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a banana.",
+            -1.678754884
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a banana.",
+            -1.695140954
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a banana.",
+            -1.704357794
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a banana.",
+            -1.704358284
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a hammer.",
+            -3.160957084
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a hammer.",
+            -3.193412184
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a guitar.",
+            -5.058327951
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a tool, which is a tranquilizer.",
+            -5.419728816
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.8353025479999999
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.835302662
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.8369976370000001
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.8369977970000001
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.8486581220000001
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.8702145819999999
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.8702160019999999
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.8718361320000001
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a lion.",
+            -0.8718367079999999
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need an animal, which is a mouse.",
+            -4.8626946790000005
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a lion tamer.",
+            -2.133240589148
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a lion tamer.",
+            -2.133538391757
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a lion tamer.",
+            -2.13421192997
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a lion tamer.",
+            -2.147936739616
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a magician.",
+            -2.83396109
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a magician.",
+            -2.83415376
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a magician.",
+            -2.8714395010000002
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a hunter.",
+            -3.80987264
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a witch doctor.",
+            -4.153666986
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need a person, who is a lion tamer.",
+            -4.66177472751
+        ]
+    ],
+    "Bake a cake.": [
+        [
+            "To bake a cake, I need a person, who is a baker, as well as an oven.",
+            -0.11601441
+        ],
+        [
+            "To bake a cake, I need a person, who is a baker, ingredients, which are milk,",
+            -0.11601441
+        ],
+        [
+            "To bake a cake, I need a person, who is a baker.",
+            -0.8740280399999999
+        ],
+        [
+            "To bake a cake, I need a person, who is a baker.",
+            -0.87402895
+        ],
+        [
+            "To bake a cake, I need a person, who is a baker.",
+            -0.88219008
+        ],
+        [
+            "To bake a cake, I need a person, who is a baker.",
+            -0.8824681299999999
+        ],
+        [
+            "To bake a cake, I need a person, who is a baker.",
+            -0.88848046
+        ],
+        [
+            "To bake a cake, I need a person, who is a baker.",
+            -0.88901398
+        ],
+        [
+            "To bake a cake, I need a person, who is a cook.",
+            -2.094905186
+        ],
+        [
+            "To bake a cake, I need a person, who is an oven.",
+            -3.4347781250000002
+        ],
+        [
+            "To bake a cake, I need a tool, which is an oven.",
+            -1.0545553756
+        ],
+        [
+            "To bake a cake, I need a tool, which is an oven.",
+            -1.0545596546
+        ],
+        [
+            "To bake a cake, I need a tool, which is an oven.",
+            -1.0627133326
+        ],
+        [
+            "To bake a cake, I need a tool, which is an oven.",
+            -1.0648491626
+        ],
+        [
+            "To bake a cake, I need a tool, which is an oven.",
+            -1.0760474906
+        ],
+        [
+            "To bake a cake, I need a tool, which is a mixer.",
+            -2.6612894186
+        ],
+        [
+            "To bake a cake, I need a tool, which is a bowl.",
+            -3.0426588686
+        ],
+        [
+            "To bake a cake, I need a tool, which is a pan.",
+            -3.2739665286000004
+        ],
+        [
+            "To bake a cake, I need a tool, which is a mixing bowl.",
+            -3.5940062085999998
+        ],
+        [
+            "To bake a cake, I need a tool, which is a spatula.",
+            -4.0402984947
+        ],
+        [
+            "To bake a cake, I need an animal, which is a cow, and a tool, which is",
+            -0.011926648
+        ],
+        [
+            "To bake a cake, I need an animal, which is an egg, and a tool, which is",
+            -0.011926768
+        ],
+        [
+            "To bake a cake, I need an animal, which is an egg.",
+            -1.387429342
+        ],
+        [
+            "To bake a cake, I need an animal, which is an egg.",
+            -1.3948532980000001
+        ],
+        [
+            "To bake a cake, I need an animal, which is an egg.",
+            -1.3997026879999999
+        ],
+        [
+            "To bake a cake, I need an animal, which is a chicken.",
+            -1.929178738
+        ],
+        [
+            "To bake a cake, I need an animal, which is a chicken.",
+            -1.9418453279999999
+        ],
+        [
+            "To bake a cake, I need an animal, which is a cow.",
+            -2.041922148
+        ],
+        [
+            "To bake a cake, I need an animal, which is a cow.",
+            -2.0439975280000002
+        ],
+        [
+            "To bake a cake, I need an animal, which is a hen.",
+            -2.247159708
+        ]
+    ],
+    "Electrocute the water and kill the eel.": [
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.27053179
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.27053212
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.272414175
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.284548671
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.288025545
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.28802559
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.2897864609999998
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.2984366550000002
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a battery.",
+            -1.2984386749999999
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a tool, which is a generator.",
+            -4.541616795
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is a fisherman, and a tool, which is",
+            -0.1398901
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is an electrician.",
+            -1.1367510593999999
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is an electrician.",
+            -1.1438786984
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is an electrician.",
+            -1.1483922704
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is an electrician.",
+            -1.15052707
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is an electrician.",
+            -1.1589588556
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is an electrician.",
+            -1.1589635652999999
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is a fisherman.",
+            -2.63209434
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is a fisherman.",
+            -2.63209614
+        ],
+        [
+            "To electrocute the water and kill the eel, I need a person, who is a diver.",
+            -2.81892535
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is a cat.",
+            -2.229780291
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is a cat.",
+            -2.2297834319999996
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is a cat.",
+            -2.2942733449999997
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is a fish.",
+            -2.3361253449999997
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is an electric eel.",
+            -2.41762143367
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is an electric eel.",
+            -2.4443632480399997
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is a chicken.",
+            -3.28719268
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is a frog.",
+            -3.9279273609999996
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is a horse.",
+            -4.525253356
+        ],
+        [
+            "To electrocute the water and kill the eel, I need an animal, which is a goldfish.",
+            -5.46183829
+        ]
+    ]
+}

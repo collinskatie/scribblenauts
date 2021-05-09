@@ -3,6 +3,11 @@ import openai
 from dotenv import load_dotenv
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import json
+import plotly.express as px
+import plotly.graph_objects as go
 
 load_dotenv()
 
@@ -19,8 +24,8 @@ To make the farmer happy, I need three animals, which are a cow, pig, and chicke
 # globals for parsing
 vowels = {"a", "e", "i", "o", "u"}
 
-goals = ["Cut down the tree.", "Put the King of the Jungle to Sleep.", "Bake a cake.", "Electrocute the water and kill the eel."]
-
+goals = ["Cut down the tree.", "Put the King of the Jungle to sleep.", "Bake a cake.", "Electrocute the water and kill the eel."]
+actions = ["tool", "person", "animal"]
 
 def parse_goal(goal):
     # convert goal as command to a prompting fragment
@@ -110,19 +115,90 @@ def complete_plan(current_goal, sampling="greedy", max_token_len=10, num_generat
     else:
         return sorted_completions
 
-sampling = "brainstorm"
-problem_solutions = {}
-for goal in goals:
-    parsed_goal = parse_goal(goal)
-    expansions = expand_goal(parsed_goal, sampling=sampling)
-    all_completions = []
-    for expansion, score in expansions:
-        completions = complete_plan(expansion, sampling=sampling)
-        all_completions.extend(completions)
-    sorted_completions = sorted(all_completions, key=lambda x: x[1])
-    problem_solutions[goal] = sorted_completions
+def get_problem_solutions(sort=False):
+    sampling = "brainstorm"
+    problem_solutions = {}
+    for goal in goals:
+        parsed_goal = parse_goal(goal)
+        expansions = expand_goal(parsed_goal, sampling=sampling)
+        all_completions = []
+        for expansion, score in expansions:
+            completions = complete_plan(expansion, sampling=sampling)
+            all_completions.extend(completions)
+        if sort:
+            sorted_completions = sorted(all_completions, key=lambda x: x[1])
+            problem_solutions[goal] = sorted_completions
+        else:
+            problem_solutions[goal] = all_completions
 
-print(problem_solutions)
+    print(problem_solutions)
+    return problem_solutions
+
+#get_problem_solutions()
+
+# plot expand goal - always returns goal, I need a tool/animal/person, logprob - fixed
+def plot_expand_goal():
+    sampling = "brainstorm"
+    problem_solutions = {}
+    for goal in goals:
+        print(goal)
+        parsed_goal = parse_goal(goal)
+        expansions = expand_goal(parsed_goal, sampling=sampling)
+        print(expansions)
+
+#plot_expand_goal()
+
+# plot complete plan - parse, final word before the end
+def plot_complete_plan(output_file=None):
+    if output_file is None:
+        problem_solutions = get_problem_solutions()
+    else:
+        f = open(output_file)
+        problem_solutions = json.load(f)
+    prob_goal = dict()
+    for goal in goals:
+        prob_goal[goal] = {a: dict() for a in actions}
+        goal_generations = problem_solutions[goal]
+        for generation in goal_generations:
+            act = find_action(generation[0])
+            gen = get_generated_vocab(generation[0])
+            if gen not in prob_goal[goal][act]:
+                prob_goal[goal][act][gen] = 0
+            prob_goal[goal][act][gen] += np.exp(generation[1])
+
+    norm_prob_goal = normalize_probs(prob_goal)
+
+    for goal in goals:
+        for action in actions:
+            d = norm_prob_goal[goal][action]
+            generations = list(d.keys())
+            prob = [d[g] for g in generations]
+            plot_data(generations, prob, goal, action)
+        
+def find_action(generation):
+    return [a for a in actions if a in generation][0]
+
+def get_generated_vocab(generation):
+    return ' '.join(generation.split(',')[-1].split(' ')[4:])[:-1]
+
+def normalize_probs(prob_dict):
+    output = dict()
+    for goal in prob_dict:
+        output[goal] = dict()
+        for action in prob_dict[goal]:
+            output[goal][action] = dict()
+            prob_sum = 0
+            for gen in prob_dict[goal][action]:
+                prob_sum += prob_dict[goal][action][gen]
+            for gen in prob_dict[goal][action]:
+                output[goal][action][gen] = prob_dict[goal][action][gen]/prob_sum
+    return output
+
+def plot_data(generations, prob, goal, action):
+    df = pd.DataFrame({'generations': generations, 'probabilities': prob})
+    fig = px.bar(df, x='generations', y='probabilities', title=f'goal: {goal} | action: {action}')
+    goal = goal.replace(" ", "_")
+    fig.write_image(f'plots/plot_{goal}_{action}.png')
 
 
-
+#plot_complete_plan('data/nonsortedcompleteoutputs.json')

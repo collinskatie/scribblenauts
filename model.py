@@ -19,7 +19,7 @@ To make the farmer happy, I need three animals, which are a cow, pig, and chicke
 # globals for parsing
 vowels = {"a", "e", "i", "o", "u"}
 
-goals = ["Cut down the tree.", "Put the King of the Jungle to Sleep.", "Bake a cake.", "Electrocute the water and kill the eel."]
+goals = ["Cut down the tree.", "Put the King of the Jungle to sleep.", "Bake a cake.", "Electrocute the water and kill the eel."]
 
 
 def parse_goal(goal):
@@ -34,43 +34,55 @@ def expand_goal(current_goal, sampling="greedy"):
     # return array of expansions (or tuples w/ score/class??)
     # sampling method determines number of sub-goals returned
 
+    current_goal += " I need"
+
     # pre-fixed options
     action_expansions = {"tool": "which", "person": "who", "animal": "which"}
+    # how many items to request -- currently, either single or several
+    action_count = ["single", "several"]
 
     # extended subgoals with score tuples
     subgoals = []
     for action in action_expansions.keys():
-        # handle grammar
-        if action[0] in vowels:
-            parsed_action = f' I need an {action}'
-        else:
-            parsed_action = f' I need a {action}'
+        for count in action_count:
+            # handle grammar
+            if count == "several":
+                # handle special punctuation
+                if action == "person":
+                    parsed_action = f' {count} people'
+                else:
+                    parsed_action = f' {count} {action}s'
+            else:
+                if action[0] in vowels:
+                    parsed_action = f' an {action}'
+                else:
+                    parsed_action = f' a {action}'
 
-        print("parsed action: ", action)
+            print("parsed action: ", action)
 
-        prompt = current_goal + parsed_action
-        response = openai.Completion.create(
-            engine="davinci",
-            prompt=seed + prompt,
-            temperature=0.7,
-            max_tokens=0,
-            top_p=1,
-            logprobs=5,
-            frequency_penalty=0,
-            presence_penalty=0,
-            echo=True
-        )
+            prompt = current_goal + parsed_action
+            response = openai.Completion.create(
+                engine="davinci",
+                prompt=seed + prompt,
+                temperature=0.7,
+                max_tokens=0,
+                top_p=1,
+                logprobs=5,
+                frequency_penalty=0,
+                presence_penalty=0,
+                echo=True
+            )
 
-        score = np.sum(response["choices"][0].logprobs.token_logprobs[1:])
-        subgoals.append((prompt + f', {action_expansions[action]}', score))
+            score = np.sum(response["choices"][0].logprobs.token_logprobs[1:])
+            subgoals.append((prompt + f', {action_expansions[action]}', score))
 
     sorted_subgoals = sorted(subgoals, key=lambda x: x[1], reverse=True)  # lowest log prob = best = first idx
+    print("sorted subgoals: ", sorted_subgoals)
 
     if sampling == "greedy":
         return [sorted_subgoals[0]]
     else:
         return sorted_subgoals
-
 
 def complete_plan(current_goal, sampling="greedy", max_token_len=10, num_generations=10):
     # generates a plan to complete goal

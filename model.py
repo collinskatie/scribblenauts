@@ -10,16 +10,28 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # seed GPT-3 with natural language type prompts:
 
+# seed = """Help Max achieve his goals.\n
+# To fix the lamp, I need a person, who is an electrician.\n
+# To bury the treasure, I need a tool, which is a shovel.\n
+# To make the farmer happy, I need three animals, which are a cow, pig, and chicken.\n"""
+
+# seed = """Help Max achieve his goals.\n
+# To fix the lamp, I need an electrician.\n
+# To bury the treasure, I need a shovel.\n
+# To make the farmer happy, I need three animals, which are a cow, pig, and chicken.\n"""
 
 seed = """Help Max achieve his goals.\n
-To fix the car, I need a person, who is a mechanic.\n
-To bury the treasure, I need a tool, which is a shovel.\n
-To make the farmer happy, I need three animals, which are a cow, pig, and chicken.\n"""
+To fix the lamp, I need person, who is an electrician.
+Kick off the beach party for Max! I will need some items, in particular, I will need a beach ball, party hat, and invitation list to invite my friends, and the beach ball needs to be inflated.\n
+I need to prepare for the new school year, so I need supplies, and the supplies that I need are a book, a pencil, and a backpack.\n"""
 
 # globals for parsing
 vowels = {"a", "e", "i", "o", "u"}
 
-goals = ["Cut down the tree.", "Put the King of the Jungle to sleep.", "Bake a cake.", "Electrocute the water and kill the eel."]
+# from Scribbelnauts
+goals = ["Cut down the tree.", "Put the King of the Jungle to sleep.", "Bake a cake.", "Electrocute the water and destroy the sea creature.",
+        "Turn the runt of the litter into an award-winning pig!", "Conceal something in my cake to help my friend burrow through the prison walls!",
+        "Make me look unique so I can draw in a crowd for my act!"]
 
 
 def parse_goal(goal):
@@ -48,10 +60,13 @@ def expand_goal(current_goal, sampling="greedy"):
             # handle grammar
             if count == "several":
                 # handle special punctuation
+                #                 if action == "person":
+                #                     parsed_action = f' {count} people'
+                #                 else: parsed_action = f' {count} {action}s'
                 if action == "person":
-                    parsed_action = f' {count} people'
+                    parsed_action = f' people'
                 else:
-                    parsed_action = f' {count} {action}s'
+                    parsed_action = f' {action}s'
             else:
                 if action[0] in vowels:
                     parsed_action = f' an {action}'
@@ -123,13 +138,14 @@ def complete_plan(current_goal, sampling="greedy", max_token_len=10, num_generat
         return sorted_completions
 
 sampling = "brainstorm"
+max_token_len= 30
 problem_solutions = {}
 for goal in goals:
     parsed_goal = parse_goal(goal)
     expansions = expand_goal(parsed_goal, sampling=sampling)
     all_completions = []
     for expansion, score in expansions:
-        completions = complete_plan(expansion, sampling=sampling)
+        completions = complete_plan(expansion, sampling=sampling, max_token_len= max_token_len)
         all_completions.extend(completions)
     sorted_completions = sorted(all_completions, key=lambda x: x[1])
     problem_solutions[goal] = sorted_completions

@@ -30,6 +30,14 @@ To fix the lamp, I need person, who is an electrician.
 Kick off the beach party for Max! I will need some items, in particular, I will need a beach ball, party hat, and invitation list to invite my friends, and the beach ball needs to be inflated.\n
 I need to prepare for the new school year, so I need supplies, and the supplies that I need are a book, a pencil, and a backpack.\n"""
 
+# inspired by people's responses
+# seed = """Help Max achieve his goals.\n
+# Max wants to host a birthday party for a friend! To bake a cake, I need an EZ bake oven and the sun.\n
+# Tourists on top of a building can't see the view - clouds are in the way! To help the tourists see the view, I need to huff and puff until i blow the clouds away.\n
+# To electrocute the water to destroy the sea creature, I need to get a boat that is made out of something that will protect me from the current and then plug in a toaster on board and throw it into the water, to stand on land and throw in a toaster plugged in from the house.\n
+# """
+
+
 # globals for parsing
 vowels = {"a", "e", "i", "o", "u"}
 
@@ -96,7 +104,7 @@ def expand_goal(current_goal, sampling="greedy"):
                 echo=True
             )
 
-            score = np.sum(response["choices"][0].logprobs.token_logprobs[1:])
+            score = np.mean(response["choices"][0].logprobs.token_logprobs[1:])
             subgoals.append((prompt + f', {action_expansions[action]}', score))
 
     sorted_subgoals = sorted(subgoals, key=lambda x: x[1], reverse=True)  # lowest log prob = best = first idx
@@ -133,7 +141,7 @@ def complete_plan(current_goal, sampling="greedy", max_token_len=10, num_generat
         end_token_idx = first_stop[0][0] if first_stop is not None and len(first_stop[0]) != 0 else 1
 
         # extract joint prob of generation
-        log_prob = np.sum(response["choices"][idx].logprobs.token_logprobs[
+        log_prob = np.mean(response["choices"][idx].logprobs.token_logprobs[
                           :end_token_idx])  # UPDATE: only sum prior to stop token
 
         # append to existing goal stream

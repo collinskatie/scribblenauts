@@ -1,0 +1,314 @@
+{
+    "Cut down the tree.": [
+        [
+            "To cut down the tree, I need a chainsaw.",
+            -0.7280887140825,
+            0.48283093672763394
+        ],
+        [
+            "To cut down the tree, I need a saw, a pulley, a knife, a rope, a branch, a sawtooth branch, a tree trunk, a branch with a rope attached to it, a rope, a branch",
+            -0.9370836,
+            0.3917687252145061
+        ],
+        [
+            "To cut down the tree, I need a chainsaw, a rope, a tree stump and a tree trunk. I can't cut down the tree without a chainsaw. I can't cut down the tree without a rope. I can",
+            -0.9370879,
+            0.39176704061260964
+        ],
+        [
+            "To cut down the tree, I need to use a chainsaw.",
+            -0.9435268648916666,
+            0.38925257037273575
+        ],
+        [
+            "To cut down the tree, I need to get a chainsaw. To get the chainsaw, I need to get a chainsaw in a box. To get the chainsaw in the box, I need to get a chainsaw that",
+            -1.1099231,
+            0.3295843051337623
+        ],
+        [
+            "To cut down the tree, I need a chainsaw, a saw horse, a person to hold the saw horse in place, and a person to cut the tree.",
+            -1.1314795692065382,
+            0.3225556597691399
+        ],
+        [
+            "To cut down the tree, I need a chainsaw, a fireman, a saw horse, and a piece of wood.",
+            -1.5073291243122222,
+            0.22150078968982417
+        ],
+        [
+            "To cut down the tree, I need to cut it with a saw. But to cut down the tree, I need to cut through the middle.",
+            -1.5314414395454548,
+            0.21622376908736063
+        ],
+        [
+            "To cut down the tree, I need a tree-cutting device, a straight-edged axe, a saw, a rope, a bucket, a wrench, and a chain saw.",
+            -1.7488683882758622,
+            0.1739706993868693
+        ],
+        [
+            "To cut down the tree, I need a chainsaw, a wood block, a hammer, and a variety of other tools [including a kitchen sink!]",
+            -2.0116098307447827,
+            0.1337731491072536
+        ]
+    ],
+    "Put the King of the Jungle to sleep.": [
+        [
+            "To put the King of the Jungle to sleep, I need to lure him by feeding him bananas. I need to get bananas from the tree, break them open, and put them in a bowl. I need to get a bowl, and put it on a",
+            -0.39287114,
+            0.6751157373951802
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to get a lion tamer's chair, a lion tamer's whip, a lion tamer's cage, and a lion tamer's chair.",
+            -0.7212641310870967,
+            0.4861373260593896
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to get a lion tamer.",
+            -1.3245102294285716,
+            0.2659331734410629
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to give him a bath, and then read him a bedtime story.",
+            -1.3512511470000002,
+            0.2589161157902209
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to get a pillow, a radio and put them in the cage. The pillow will make the radio fall and the radio will play music that will put the king of the jungle to sleep.",
+            -1.4429870466842107,
+            0.23622110034230503
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to get a bowl and fill it with snow and put it next to the King of the Jungle.",
+            -1.44476534828,
+            0.2358014012689763
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to get a lion tamer's chair, an anesthetic and an electric chair.",
+            -1.478487440352941,
+            0.22798226449567846
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to get a banana and a lion.",
+            -1.6817363775,
+            0.1860506412576876
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to get a ladder, then a banana [to distract the monkey], and then a net to catch the monkey.",
+            -1.7888666143478265,
+            0.16714950720378158
+        ],
+        [
+            "To put the King of the Jungle to sleep, I need to throw a spear at the moon. It's a very bright moon. I need to have a spear to throw.",
+            -2.0668568854166667,
+            0.12658302203462804
+        ]
+    ],
+    "Catch a rodent in a trap!": [
+        [
+            "To catch a rodent in a trap, I need to get a cage, cheese, a mouse, a cage trap, a cheese trap, a cage, a mouse, a cage that traps cheese, a trap that can catch a mouse and cheese.",
+            -0.66648024,
+            0.5135128425971381
+        ],
+        [
+            "To catch a rodent in a trap, I need to make a trap -- luring the rat into the trap by setting up some cheese, wood, string, glue, a cage, a knife, a hammer, a banana, a string, a",
+            -0.666481,
+            0.5135124523275261
+        ],
+        [
+            "To catch a rodent in a trap, I need to make a trap out of a piece of gum and then I need to go into the house and make a trap out of a piece of gum and then I need to go into the house and make",
+            -0.666482,
+            0.5135119388153305
+        ],
+        [
+            "To catch a rodent in a trap, I need to get a metal cage, put the trap in the cage, close the door, and put the cage near the rodent's hole.",
+            -1.3219130611111112,
+            0.26662474432794725
+        ],
+        [
+            "To catch a rodent in a trap, I need a cage with a hole, some cheese, a mousetrap, some vinegar, a glass of water, and a rat.",
+            -1.5313404986962964,
+            0.21624559599981552
+        ],
+        [
+            "To catch a rodent in a trap, I need a cage, a carrot, a peppermint, a cage, a cage, and a cage.",
+            -1.5555952344999997,
+            0.21106371283960074
+        ],
+        [
+            "To catch a rodent in a trap, I need a mouse trap.",
+            -1.654483265,
+            0.19119082517549288
+        ],
+        [
+            "To catch a rodent in a trap, I need to build a trap with a bowl of peanut butter and a trigger.",
+            -1.8431727745714286,
+            0.15831433273882392
+        ],
+        [
+            "To catch a rodent in a trap, I need to use a piece of cheese, or a trap that requires cheese to get it to set up, and then set the trap with the cheese.",
+            -1.9465634136448273,
+            0.14276384982019166
+        ],
+        [
+            "To catch a rodent in a trap, I need a cage.",
+            -2.262430166666667,
+            0.10409720356746321
+        ]
+    ],
+    "Turn the runt of the litter into an award-winning pig!": [
+        [
+            "To turn the runt of the litter into an award-winning pig, I need to give the pig a bath, feed it, and then wait a few days. To give the pig a bath, I need a pig, a bathtub, and a towel.",
+            -1.191553699027027,
+            0.30374896278675273
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need to feed it the right food.",
+            -1.5729993714285715,
+            0.207422112457341
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need to take it to the DMV to get a license, and then put it in a beauty contest.",
+            -1.6707205924999997,
+            0.1881114650773419
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need a book on how to breed a show pig, a pig, pig food, a boar, a sow, a pig breeder, a country farm, a pen and a pig show.",
+            -1.7553487942851285,
+            0.17284694375025236
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need a pig, a pen, a bucket of water, a button, a power cable, a battery, a ton of salt, a shovel, a bottle of water, a pair of sunglasses, a",
+            -1.7613865,
+            0.17180648891095499
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need to clear a path to the toilet, toss a bucket of water into the toilet, and feed the runt of the litter.",
+            -1.860199622896154,
+            0.15564155764818768
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need to train it to run on the track and get it a medal.",
+            -1.941469530714286,
+            0.1434929274995755
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need a big pink ribbon, a name tag, a ticket, a giant trophy, a palm tree, a teacup, a bridge -- or a magician with all the above.",
+            -2.068971991461111,
+            0.12631556846563707
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need to get a mop from the closet, get the pig a puddle, and mop its head.",
+            -2.2875581477681814,
+            0.10151404174350351
+        ],
+        [
+            "To turn the runt of the litter into an award-winning pig, I need to use a weight lifting machine and then bottle feed him.",
+            -2.5485002666666663,
+            0.07819885553293565
+        ]
+    ],
+    "Conceal something in my cake to help my friend burrow through the prison walls!": [
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to put a batter in a pastry bag and then put a plate on top of the cake to make it flat. I then use the pastry bag to put the batter in and then put the cake in",
+            -0.60614127,
+            0.5454515637737762
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to get a cake pan, eggs, butter, powdered sugar, an oven, a bowl, a cake, flour, cocoa powder, vanilla extract, sugar, salt, baking powder, baking soda,",
+            -0.6061414,
+            0.5454514928650775
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to make a cake with a tunnel in it using the same ingredients as the cake to celebrate my friend's birthday.",
+            -1.3775918893478263,
+            0.25218511209075056
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to bake a cake, mix it up, add something to the batter, bake it, and frost it.",
+            -1.4152066686363638,
+            0.24287541353102612
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to bake a cake and conceal a stick of dynamite inside it!",
+            -1.4715182562764286,
+            0.2295766642425278
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to get a file, a knife, a spoon, a cake pan, a cake icing bag, a cake, and a cake mix.",
+            -1.5714757092857146,
+            0.2077383945700358
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to get a cake, a fork, a spoon, a spoonful of chocolate and a frosting tube.",
+            -1.7864901516363636,
+            0.16754720414369623
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to bake my cake with a fork and a spoon.",
+            -1.8516275927272725,
+            0.1569814563975277
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to mix the egg yolk into the batter.",
+            -1.9105024399999997,
+            0.1480060037740387
+        ],
+        [
+            "To conceal something in my cake to help my friend burrow through the prison walls, I need to bake a cake with an object hidden in it [such as a piece of metal and a bar of soap] and also use a special ingredient to protect this object from burning up.",
+            -2.007223577962162,
+            0.13436120068339247
+        ]
+    ],
+    "Make me look unique so I can draw in a crowd for my act!": [
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need a hat that occupies my head, that I can draw on with markers, that I can wear a scarf with, that I can wear a shirt with, that I can paint my face with, that",
+            -1.0429744,
+            0.3524049283203087
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need to get a costume that is different from the other people in the circus.",
+            -1.4462220806666661,
+            0.2354581518029334
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need to get a purple hat, a yellow shirt, a red tie and a black suit.",
+            -1.5577349561111111,
+            0.2106125780754419
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need to get me a different colored bowtie, a different colored vest, and a different colored hat.",
+            -1.56885242165,
+            0.20828406754763526
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need to put on a pair of glasses.",
+            -1.574778131875,
+            0.20705348615412517
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need a unique look, a unique costume and a unique act.",
+            -1.5860111008333329,
+            0.2047406749587035
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need a hat made out of a red umbrella, a pair of red pants, a red bowtie, a red shirt, a red rubber nose, a red nose, and a red chin.",
+            -1.6616076660947368,
+            0.1898335456939793
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need a clown costume, makeup, a wig, and a good juggling routine.",
+            -1.6627163353333332,
+            0.18962319970502392
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need a hat, a cane, a flower, a one-eyed monster mask, and a clown nose.",
+            -1.740956571428571,
+            0.17535258309415558
+        ],
+        [
+            "To make me look unique so I can draw in a crowd for my act, I need to get a beard, paint my face, put on some eyeliner, get some new clothes, and get some pointy shoes.",
+            -1.7670636909629627,
+            0.17083387413695414
+        ]
+    ]
+}

@@ -33,10 +33,9 @@ I need to prepare for the new school year, so I need supplies, and the supplies 
 # inspired by people's responses
 # seed = """Help Max achieve his goals.\n
 # Max wants to host a birthday party for a friend! To bake a cake, I need an EZ bake oven and the sun.\n
-# Tourists on top of a building can't see the view - clouds are in the way! To help the tourists see the view, I need to huff and puff until i blow the clouds away.\n
+# Tourists on top of a building can't see the view - clouds are in the way! To help the tourists see the view, I need to huff and puff until I blow the clouds away.\n
 # To electrocute the water to destroy the sea creature, I need to get a boat that is made out of something that will protect me from the current and then plug in a toaster on board and throw it into the water, to stand on land and throw in a toaster plugged in from the house.\n
 # """
-
 
 # globals for parsing
 vowels = {"a", "e", "i", "o", "u"}
@@ -153,26 +152,28 @@ def complete_plan(current_goal, sampling="greedy", max_token_len=10, num_generat
     else:
         return sorted_completions
 
-sampling = "brainstorm"
-use_flat_model = True # toggle to flip b/w using flat vs. hierarchal/constrained model
-max_token_len= 30
-problem_solutions = {}
-for goal in goals:
-    parsed_goal = parse_goal(goal)
-    if use_flat_model:
-        parsed_goal += " I need"
-        all_completions = []
-        completions = complete_plan(parsed_goal, sampling=sampling, max_token_len=max_token_len)
-        all_completions.extend(completions)
-    else:
-        # use hierarchal/constrained sampling
-        expansions = expand_goal(parsed_goal, sampling=sampling)
-        all_completions = []
-        for expansion, score in expansions:
-            completions = complete_plan(expansion, sampling=sampling, max_token_len=max_token_len)
+# use_flat_model: toggle to flip b/w using flat vs. hierarchal/constrained model
+def get_problem_solutions(use_flat_model = True):
+    sampling = "brainstorm"
+    max_token_len= 30
+    problem_solutions = {}
+    for goal in goals:
+        parsed_goal = parse_goal(goal)
+        if use_flat_model:
+            parsed_goal += " I need"
+            all_completions = []
+            completions = complete_plan(parsed_goal, sampling=sampling, max_token_len=max_token_len)
             all_completions.extend(completions)
-    sorted_completions = sorted(all_completions, key=lambda x: x[1], reverse=True)
-    problem_solutions[goal] = sorted_completions
+        else:
+            # use hierarchal/constrained sampling
+            expansions = expand_goal(parsed_goal, sampling=sampling)
+            all_completions = []
+            for expansion, score in expansions:
+                completions = complete_plan(expansion, sampling=sampling, max_token_len=max_token_len)
+                all_completions.extend(completions)
+        sorted_completions = sorted(all_completions, key=lambda x: x[1], reverse=True)
+        problem_solutions[goal] = sorted_completions
+    return problem_solutions
 
 # plot expand goal - always returns goal, I need a tool/animal/person, logprob - fixed
 def plot_expand_goal():
@@ -194,6 +195,7 @@ def plot_complete_plan(output_file=None):
     prob_goal = dict()
     for goal in goals:
         prob_goal[goal] = {a: dict() for a in actions}
+        problem_solutions = get_problem_solutions(False)
         goal_generations = problem_solutions[goal]
         for generation in goal_generations:
             act = find_action(generation[0])
@@ -238,3 +240,45 @@ def plot_data(generations, prob, goal, action):
 
 
 #plot_complete_plan('data/nonsortedcompleteoutputs.json')
+
+# Clause breakdown
+def plot_clause(goal, clause_freq, clause_num, isGoal=True):
+    maxx = max(clause_freq.keys())
+    xs = [str(i) for i in range(1, maxx+1)] #number of clauses
+    ys = [clause_freq[int(x)] if (int(x) in clause_freq.keys()) else 0 for x in xs] #frequencies
+    df = pd.DataFrame({'Number of Clauses': xs, 'Frequencies': ys})
+    if isGoal:
+        fig = px.bar(df, x='Number of Clauses', y='Frequencies', title=f'Number of Clauses: {clause_num}. Goal: {goal}')
+        goal = goal.replace(" ", "_")
+    else:
+        fig = px.bar(df, x='Number of Clauses', y='Frequencies', title=f'Number of Clauses: {clause_num}. Aggregated')
+    fig.write_image(f'clauses/plots{clause_num}/{goal}.png')
+
+
+def plot_clauses(clause_file, clause_num):
+    f = open(clause_file)
+    clauses = json.load(f)
+    total_clause_len_freqs = dict()
+    for goal in clauses:
+        clause_len_freq = dict()
+        #N = len(clauses[goal])
+        for generation in clauses[goal]:
+            num_clauses = len(generation.split(',')[1:])
+            if num_clauses not in clause_len_freq:
+                clause_len_freq[num_clauses] = 0
+            #clause_len_freq[num_clauses] += 1/N #for probabilities
+            clause_len_freq[num_clauses] += 1
+        plot_clause(goal, clause_len_freq, clause_num)
+        
+        # aggregate results
+        for k in clause_len_freq:
+            if k not in total_clause_len_freqs:
+                total_clause_len_freqs[k] = 0
+            total_clause_len_freqs[k] += clause_len_freq[k]
+
+    # plot aggregated results
+    plot_clause("Aggregated", total_clause_len_freqs, clause_num, False)
+    
+#plot_clauses('clauses/clause1.json', 1)
+#plot_clauses('clauses/clause2.json', 2)
+#plot_clauses('clauses/clause3.json', 3)

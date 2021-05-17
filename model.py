@@ -8,6 +8,8 @@ import seaborn as sns
 import json
 import plotly.express as px
 import plotly.graph_objects as go
+import textwrap
+import cv2
 
 load_dotenv()
 
@@ -248,10 +250,16 @@ def plot_clause(goal, clause_freq, clause_num, isGoal=True):
     ys = [clause_freq[int(x)] if (int(x) in clause_freq.keys()) else 0 for x in xs] #frequencies
     df = pd.DataFrame({'Number of Clauses': xs, 'Frequencies': ys})
     if isGoal:
-        fig = px.bar(df, x='Number of Clauses', y='Frequencies', title=f'Number of Clauses: {clause_num}. Goal: {goal}')
+        g = textwrap.wrap(goal, width=50)
+        g = '<br>'.join(g)
+        fig = px.bar(df, x='Number of Clauses', y='Frequencies')
+        fig.update_layout(title_text=f'Number of Clauses: {clause_num}. Goal: {g}', title_x=0.5)
         goal = goal.replace(" ", "_")
     else:
-        fig = px.bar(df, x='Number of Clauses', y='Frequencies', title=f'Number of Clauses: {clause_num}. Aggregated')
+        fig = px.bar(df, x='Number of Clauses', y='Frequencies')
+        fig.update_layout(title_text=f'Number of Clauses: {clause_num}', title_x=0.5, font=dict(size=20))
+    fig.layout.xaxis.title.font.size = 20
+    fig.layout.yaxis.title.font.size = 20
     fig.write_image(f'clauses/plots{clause_num}/{goal}.png')
 
 
@@ -279,6 +287,14 @@ def plot_clauses(clause_file, clause_num):
     # plot aggregated results
     plot_clause("Aggregated", total_clause_len_freqs, clause_num, False)
     
-#plot_clauses('clauses/clause1.json', 1)
-#plot_clauses('clauses/clause2.json', 2)
-#plot_clauses('clauses/clause3.json', 3)
+# plot_clauses('clauses/clause1.json', 1)
+# plot_clauses('clauses/clause2.json', 2)
+# plot_clauses('clauses/clause3.json', 3)
+
+# concatenate images
+def horz_concat(ims, output_name):
+    imlist = [cv2.imread(i) for i in ims]
+    im = cv2.hconcat(imlist)
+    cv2.imwrite(output_name, im)
+
+# horz_concat(['clauses/plots1/Aggregated.png', 'clauses/plots2/Aggregated.png', 'clauses/plots3/Aggregated.png'], 'clauses/Aggregated.png')

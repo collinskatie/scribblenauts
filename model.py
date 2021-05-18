@@ -44,7 +44,7 @@ vowels = {"a", "e", "i", "o", "u"}
 
 #goals = ["Cut down the tree.", "Put the King of the Jungle to sleep.", "Bake a cake.", "Electrocute the water and kill the eel."]
 actions = ["tool", "person", "animal"]
-
+actions_multiple = ["tools", "a tool", "people", "a person", "an animal", "animals"]
 # from Scribbelnauts
 goals = ["Cut down the tree.", "Put the King of the Jungle to sleep.", "Bake a cake.", "Electrocute the water and destroy the sea creature.",
         "Turn the runt of the litter into an award-winning pig!", "Conceal something in my cake to help my friend burrow through the prison walls!",
@@ -190,7 +190,7 @@ def plot_expand_goal():
 #plot_expand_goal()
 
 # plot complete plan - parse, final word before the end
-def plot_complete_plan(output_file=None):
+def plot_complete_plan(actions, output_file=None):
     if output_file:
         f = open(output_file)
         problem_solutions = json.load(f)
@@ -201,7 +201,7 @@ def plot_complete_plan(output_file=None):
         goal_generations = problem_solutions[goal]
         for generation in goal_generations:
             act = find_action(generation[0])
-            gen = get_generated_vocab(generation[0])
+            gen = get_generated_vocab(generation[0]) # TODO: could output a list of generated vocab
             if gen not in prob_goal[goal][act]:
                 prob_goal[goal][act][gen] = 0
             prob_goal[goal][act][gen] += np.exp(generation[1])
@@ -219,7 +219,7 @@ def find_action(generation):
     return [a for a in actions if a in generation][0]
 
 def get_generated_vocab(generation):
-    return ' '.join(generation.split(',')[-1].split(' ')[4:])[:-1]
+    return ' '.join(generation.split(',')[-1].split(' ')[4:])[:-1] #TODO: smarter parsing of generated vocab
 
 def normalize_probs(prob_dict):
     output = dict()
@@ -234,14 +234,15 @@ def normalize_probs(prob_dict):
                 output[goal][action][gen] = prob_dict[goal][action][gen]/prob_sum
     return output
 
-def plot_data(generations, prob, goal, action):
+def plot_data(generations, prob, goal, action, folder):
     df = pd.DataFrame({'generations': generations, 'probabilities': prob})
     fig = px.bar(df, x='generations', y='probabilities', title=f'goal: {goal} | action: {action}')
     goal = goal.replace(" ", "_")
-    fig.write_image(f'plots/plot_{goal}_{action}.png')
+    fig.write_image(f'{folder}plots/plot_{goal}_{action}.png')
 
 
-#plot_complete_plan('data/nonsortedcompleteoutputs.json')
+#plot_complete_plan(actions, 'data/nonsortedcompleteoutputs.json', '')
+#plot_complete_plan(actions_multiple, 'newdata/singlestepsamples_complexseeds.json', 'new')
 
 # Clause breakdown
 def plot_clause(goal, clause_freq, clause_num, isGoal=True):
@@ -298,3 +299,21 @@ def horz_concat(ims, output_name):
     cv2.imwrite(output_name, im)
 
 # horz_concat(['clauses/plots1/Aggregated.png', 'clauses/plots2/Aggregated.png', 'clauses/plots3/Aggregated.png'], 'clauses/Aggregated.png')
+
+# greedy/brainstorming
+
+def get_extreme_logprob(path, maxmin):
+    f = open(path)
+    generations = json.load(f)
+    d = dict()
+    for goal in generations:
+        if maxmin == 'max':
+            ind = np.argmax(generations[goal], axis=0)[1]
+        else: # == 'min'
+            ind = np.argmin(generations[goal], axis=0)[1]
+        gen = generations[goal][ind][0]
+        d[goal] = gen
+    return d
+
+#print(get_extreme_logprob('newdata/singlestepsamples_complexseeds.json', 'max'))
+#print(get_extreme_logprob('newdata/singlestepsamples_complexseeds.json', 'min'))

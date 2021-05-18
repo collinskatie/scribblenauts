@@ -10,6 +10,10 @@ import plotly.express as px
 import plotly.graph_objects as go
 import textwrap
 import cv2
+from textblob import TextBlob
+import nltk
+# nltk.download('brown')
+# nltk.download('punkt')
 
 load_dotenv()
 
@@ -190,21 +194,24 @@ def plot_expand_goal():
 #plot_expand_goal()
 
 # plot complete plan - parse, final word before the end
-def plot_complete_plan(actions, output_file=None):
+def plot_complete_plan(actions, folder, output_file=None):
     if output_file:
         f = open(output_file)
         problem_solutions = json.load(f)
+        goals = problem_solutions.keys()
+    else:
+        problem_solutions = get_problem_solutions(False)
     prob_goal = dict()
     for goal in goals:
         prob_goal[goal] = {a: dict() for a in actions}
-        problem_solutions = get_problem_solutions(False)
         goal_generations = problem_solutions[goal]
         for generation in goal_generations:
-            act = find_action(generation[0])
-            gen = get_generated_vocab(generation[0]) # TODO: could output a list of generated vocab
-            if gen not in prob_goal[goal][act]:
-                prob_goal[goal][act][gen] = 0
-            prob_goal[goal][act][gen] += np.exp(generation[1])
+            act = find_action(generation[0], actions)
+            gens = get_generated_vocab(generation[0]) # TODO: could output a list of generated vocab
+            for gen in gens:
+                if gen not in prob_goal[goal][act]:
+                    prob_goal[goal][act][gen] = 0
+                prob_goal[goal][act][gen] += np.exp(generation[1])
 
     norm_prob_goal = normalize_probs(prob_goal)
 
@@ -213,13 +220,29 @@ def plot_complete_plan(actions, output_file=None):
             d = norm_prob_goal[goal][action]
             generations = list(d.keys())
             prob = [d[g] for g in generations]
-            plot_data(generations, prob, goal, action)
+            plot_data(generations, prob, goal, action, folder)
         
-def find_action(generation):
+def find_action(generation, actions):
     return [a for a in actions if a in generation][0]
 
 def get_generated_vocab(generation):
-    return ' '.join(generation.split(',')[-1].split(' ')[4:])[:-1] #TODO: smarter parsing of generated vocab
+    #return ' '.join(generation.split(',')[-1].split(' ')[4:])[:-1] #TODO: smarter parsing of generated vocab
+    gen = ','.join(generation.split(',')[2:])
+    blob = TextBlob(gen)
+    np = blob.noun_phrases
+    tags = blob.tags
+    output = list(np) #add noun phrases
+    for tag in tags:
+        if 'NN' in tag[1]:
+            if not in_list(tag[0], np):
+                output.append(tag[0])
+    return output
+
+def in_list(tag, list):
+    for i in list:
+        if tag in i:
+            return True
+    return False
 
 def normalize_probs(prob_dict):
     output = dict()
@@ -236,13 +259,16 @@ def normalize_probs(prob_dict):
 
 def plot_data(generations, prob, goal, action, folder):
     df = pd.DataFrame({'generations': generations, 'probabilities': prob})
-    fig = px.bar(df, x='generations', y='probabilities', title=f'goal: {goal} | action: {action}')
+    g = textwrap.wrap(goal, width=50)
+    g = '<br>'.join(g)
+    fig = px.bar(df, x='generations', y='probabilities')
+    fig.update_layout(title_text=f'goal: {g} | action: {action}', title_x=0.5)
     goal = goal.replace(" ", "_")
     fig.write_image(f'{folder}plots/plot_{goal}_{action}.png')
 
 
-#plot_complete_plan(actions, 'data/nonsortedcompleteoutputs.json', '')
-#plot_complete_plan(actions_multiple, 'newdata/singlestepsamples_complexseeds.json', 'new')
+#plot_complete_plan(actions, '', 'data/nonsortedcompleteoutputs.json')
+plot_complete_plan(actions_multiple, 'new', 'newdata/singlestepsamples_complexseeds.json')
 
 # Clause breakdown
 def plot_clause(goal, clause_freq, clause_num, isGoal=True):

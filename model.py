@@ -258,17 +258,18 @@ def normalize_probs(prob_dict):
     return output
 
 def plot_data(generations, prob, goal, action, folder):
-    df = pd.DataFrame({'generations': generations, 'probabilities': prob})
-    g = textwrap.wrap(goal, width=50)
-    g = '<br>'.join(g)
-    fig = px.bar(df, x='generations', y='probabilities')
-    fig.update_layout(title_text=f'goal: {g} | action: {action}', title_x=0.5)
+    df = pd.DataFrame({'Generations': generations, 'Probabilities': prob})
+    # g = textwrap.wrap(goal, width=50)
+    # g = '<br>'.join(g)
+    fig = px.bar(df, x='Generations', y='Probabilities')
+    # fig.update_layout(title_text=f'goal: {g} | action: {action}', title_x=0.5)
+    fig.update_layout(title_text=f'Action: {action}', title_x=0.5)
     goal = goal.replace(" ", "_")
     fig.write_image(f'{folder}plots/plot_{goal}_{action}.png')
 
 
 #plot_complete_plan(actions, '', 'data/nonsortedcompleteoutputs.json')
-plot_complete_plan(actions_multiple, 'new', 'newdata/singlestepsamples_complexseeds.json')
+# plot_complete_plan(actions_multiple, 'new', 'newdata/singlestepsamples_complexseeds.json')
 
 # Clause breakdown
 def plot_clause(goal, clause_freq, clause_num, isGoal=True):
@@ -324,7 +325,17 @@ def horz_concat(ims, output_name):
     im = cv2.hconcat(imlist)
     cv2.imwrite(output_name, im)
 
+def vert_concat(ims, output_name):
+    imlist = [cv2.imread(i) for i in ims]
+    im = cv2.vconcat(imlist)
+    cv2.imwrite(output_name, im)
+
 # horz_concat(['clauses/plots1/Aggregated.png', 'clauses/plots2/Aggregated.png', 'clauses/plots3/Aggregated.png'], 'clauses/Aggregated.png')
+
+# concatenate plots for each action under a particular goal
+# vert_concat(['newplots/plot_Put_the_King_of_the_Jungle_to_sleep._a person.png', 'newplots/plot_Put_the_King_of_the_Jungle_to_sleep._a tool.png', 'newplots/plot_Put_the_King_of_the_Jungle_to_sleep._an animal.png'], 'concatnewplots/king_sing.png')
+# vert_concat(['newplots/plot_Put_the_King_of_the_Jungle_to_sleep._people.png', 'newplots/plot_Put_the_King_of_the_Jungle_to_sleep._tools.png', 'newplots/plot_Put_the_King_of_the_Jungle_to_sleep._animals.png'], 'concatnewplots/king_pl.png')
+# horz_concat(['concatnewplots/king_sing.png','concatnewplots/king_pl.png'], 'concatnewplots/king.png')
 
 # greedy/brainstorming
 

@@ -333,9 +333,35 @@ def vert_concat(ims, output_name):
 # horz_concat(['clauses/plots1/Aggregated.png', 'clauses/plots2/Aggregated.png', 'clauses/plots3/Aggregated.png'], 'clauses/Aggregated.png')
 
 # concatenate plots for each action under a particular goal
+#KING OF JUNGLE
 # vert_concat(['newplots/plot_Put_the_King_of_the_Jungle_to_sleep._a person.png', 'newplots/plot_Put_the_King_of_the_Jungle_to_sleep._a tool.png', 'newplots/plot_Put_the_King_of_the_Jungle_to_sleep._an animal.png'], 'concatnewplots/king_sing.png')
 # vert_concat(['newplots/plot_Put_the_King_of_the_Jungle_to_sleep._people.png', 'newplots/plot_Put_the_King_of_the_Jungle_to_sleep._tools.png', 'newplots/plot_Put_the_King_of_the_Jungle_to_sleep._animals.png'], 'concatnewplots/king_pl.png')
 # horz_concat(['concatnewplots/king_sing.png','concatnewplots/king_pl.png'], 'concatnewplots/king.png')
+
+#BAKE A CAKE
+# vert_concat(['newplots/plot_Bake_a_cake._a person.png', 'newplots/plot_Bake_a_cake._a tool.png', 'newplots/plot_Bake_a_cake._an animal.png'], 'concatnewplots/cake_sing.png')
+# vert_concat(['newplots/plot_Bake_a_cake._people.png', 'newplots/plot_Bake_a_cake._tools.png', 'newplots/plot_Bake_a_cake._animals.png'], 'concatnewplots/cake_pl.png')
+# horz_concat(['concatnewplots/cake_sing.png','concatnewplots/cake_pl.png'], 'concatnewplots/cake.png')
+
+#CUT DOWN TREE
+# vert_concat(['newplots/plot_Cut_down_the_tree._a person.png', 'newplots/plot_Cut_down_the_tree._a tool.png', 'newplots/plot_Cut_down_the_tree._an animal.png'], 'concatnewplots/tree_sing.png')
+# vert_concat(['newplots/plot_Cut_down_the_tree._people.png', 'newplots/plot_Cut_down_the_tree._tools.png', 'newplots/plot_Cut_down_the_tree._animals.png'], 'concatnewplots/tree_pl.png')
+# horz_concat(['concatnewplots/tree_sing.png','concatnewplots/tree_pl.png'], 'concatnewplots/tree.png')
+
+# ELECTROCUTE 
+# vert_concat(['newplots/plot_Electrocute_the_water_and_destroy_the_sea_creature._a person.png', 'newplots/plot_Electrocute_the_water_and_destroy_the_sea_creature._a tool.png', 'newplots/plot_Electrocute_the_water_and_destroy_the_sea_creature._an animal.png'], 'concatnewplots/electrocute_sing.png')
+# vert_concat(['newplots/plot_Electrocute_the_water_and_destroy_the_sea_creature._people.png', 'newplots/plot_Electrocute_the_water_and_destroy_the_sea_creature._tools.png', 'newplots/plot_Electrocute_the_water_and_destroy_the_sea_creature._animals.png'], 'concatnewplots/electrocute_pl.png')
+# horz_concat(['concatnewplots/electrocute_sing.png','concatnewplots/electrocute_pl.png'], 'concatnewplots/electrocute.png')
+
+#CONCEAL 
+# vert_concat(['newplots/plot_Conceal_something_in_my_cake_to_help_my_friend_burrow_through_the_prison_walls!_a person.png', 'newplots/plot_Conceal_something_in_my_cake_to_help_my_friend_burrow_through_the_prison_walls!_a tool.png', 'newplots/plot_Conceal_something_in_my_cake_to_help_my_friend_burrow_through_the_prison_walls!_an animal.png'], 'concatnewplots/conceal_sing.png')
+# vert_concat(['newplots/plot_Conceal_something_in_my_cake_to_help_my_friend_burrow_through_the_prison_walls!_people.png', 'newplots/plot_Conceal_something_in_my_cake_to_help_my_friend_burrow_through_the_prison_walls!_tools.png', 'newplots/plot_Conceal_something_in_my_cake_to_help_my_friend_burrow_through_the_prison_walls!_animals.png'], 'concatnewplots/conceal_pl.png')
+# horz_concat(['concatnewplots/conceal_sing.png','concatnewplots/conceal_pl.png'], 'concatnewplots/conceal.png')
+
+#RUNT
+# vert_concat(['newplots/plot_Turn_the_runt_of_the_litter_into_an_award-winning_pig!_a person.png', 'newplots/plot_Turn_the_runt_of_the_litter_into_an_award-winning_pig!_a tool.png', 'newplots/plot_Turn_the_runt_of_the_litter_into_an_award-winning_pig!_an animal.png'], 'concatnewplots/runt_sing.png')
+# vert_concat(['newplots/plot_Turn_the_runt_of_the_litter_into_an_award-winning_pig!_people.png', 'newplots/plot_Turn_the_runt_of_the_litter_into_an_award-winning_pig!_tools.png', 'newplots/plot_Turn_the_runt_of_the_litter_into_an_award-winning_pig!_animals.png'], 'concatnewplots/runt_pl.png')
+# horz_concat(['concatnewplots/runt_sing.png','concatnewplots/runt_pl.png'], 'concatnewplots/runt.png')
 
 # greedy/brainstorming
 
@@ -354,3 +380,5 @@ def get_extreme_logprob(path, maxmin):
 
 #print(get_extreme_logprob('newdata/singlestepsamples_complexseeds.json', 'max'))
 #print(get_extreme_logprob('newdata/singlestepsamples_complexseeds.json', 'min'))
+#print(get_extreme_logprob('newdata/flatsamples_complex_seeds.json', 'max'))
+#print(get_extreme_logprob('newdata/flatsamples_complex_seeds.json', 'min'))
